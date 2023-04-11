@@ -56,7 +56,16 @@ export type Repository = {
     createdAt: string
     isEmpty: boolean
     languages: Languages
-    object: {
+    packageJson: {
+      text: string | null
+    }
+    requirements: {
+      text: string | null
+    }
+    gemfile: {
+      text: string | null
+    }
+    composer: {
       text: string | null
     }
   }

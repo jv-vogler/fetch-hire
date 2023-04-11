@@ -58,7 +58,22 @@ export const USER_DATA_QUERY = gql`
                 size
               }
             }
-            object(expression: "HEAD:package.json") {
+            packageJson: object(expression: "HEAD:package.json") {
+              ... on Blob {
+                text
+              }
+            }
+            requirements: object(expression: "HEAD:requirements.txt") {
+              ... on Blob {
+                text
+              }
+            }
+            gemfile: object(expression: "HEAD:Gemfile") {
+              ... on Blob {
+                text
+              }
+            }
+            composer: object(expression: "HEAD:composer.json") {
               ... on Blob {
                 text
               }
