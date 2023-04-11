@@ -17,18 +17,17 @@ const useCalculateLanguages = (repos: Props) => {
     if (!repos) return
 
     const mergedLanguages = repos
-      .filter((repo) => !repo.node.isEmpty && !repo.node.isFork)
-      .flatMap((repo) => repo.node.languages.edges)
+      .flatMap(repo => repo.node.languages.edges)
       .reduce<Record<string, LangData>>((acc, lang) => accumulateLangData(acc, lang), {})
 
     const languagesArray = Object.values(mergedLanguages).sort((a, b) => b.size - a.size)
 
     const totalSize = languagesArray.reduce((acc, lang) => acc + lang.size, 0)
 
-    const languagesWithPercentage = languagesArray.map((lang) => ({
+    const languagesWithPercentage = languagesArray.map(lang => ({
       name: lang.name,
       color: lang.color,
-      percentage: ((lang.size / totalSize) * 100).toFixed(1),
+      percentage: ((lang.size / totalSize) * 100).toFixed(2),
     }))
 
     return languagesWithPercentage
