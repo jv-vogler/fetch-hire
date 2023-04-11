@@ -33,11 +33,12 @@ export const USER_DATA_QUERY = gql`
         }
       }
       repositories(
+        ownerAffiliations: OWNER
+        privacy: PUBLIC
         isFork: false
+        isLocked: false
         first: 100
         orderBy: { field: PUSHED_AT, direction: DESC }
-        isLocked: false
-        privacy: PUBLIC
       ) {
         edges {
           node {

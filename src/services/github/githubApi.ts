@@ -1,4 +1,4 @@
-import { GraphQLClient } from 'graphql-request'
+import { ClientError, GraphQLClient } from 'graphql-request'
 
 import { USER_DATA_QUERY } from '@/graphql/userDataQuery'
 import { GithubData } from '@/types/GithubData'
@@ -19,6 +19,7 @@ export const fetchUserData = async (login: string) => {
     const userData = await graphQLClient.request<GithubData>(USER_DATA_QUERY, { login })
     return userData
   } catch (error) {
-    throw new Error(`User "${login}" not found.`)
+    const clientError = error as ClientError
+    throw new Error(clientError.response.errors && clientError.response.errors[0].message)
   }
 }
