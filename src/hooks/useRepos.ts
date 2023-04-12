@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 
 import { Language, Repository } from '@/types/GithubData'
+import { parsePackageJsonList } from '@/utils/parsers'
 
 type Props = Repository[] | undefined
 
@@ -8,8 +9,41 @@ type LangData = { name: string; color: string; size: number }
 
 export const useRepos = (repos: Props) => {
   const languages = useCalculateLanguages(repos)
+  const technologies = useCaculateTechnologies(repos)
 
-  return { languages }
+  return { languages, technologies }
+}
+
+const useCaculateTechnologies = (repos: Props) => {
+  const technologies = useMemo(() => {
+    if (!repos) return
+
+    const initialDependenciesList = {
+      packageJsonList: [] as string[],
+      requirementsList: [] as string[],
+      gemfileList: [] as string[],
+      composerList: [] as string[],
+    }
+
+    const dependenciesLists = repos.reduce((acc, repo) => {
+      const { packageJson, requirements, gemfile, composer } = repo.node
+      packageJson && packageJson.text && acc.packageJsonList.push(packageJson.text)
+      requirements && requirements.text && acc.requirementsList.push(requirements.text)
+      gemfile && gemfile.text && acc.gemfileList.push(gemfile.text)
+      composer && composer.text && acc.composerList.push(composer.text)
+
+      return acc
+    }, initialDependenciesList)
+
+    const technologiesUsed = {
+      ...parsePackageJsonList(dependenciesLists.packageJsonList),
+      //TODO add other parse methods
+    }
+
+    return technologiesUsed
+  }, [repos])
+
+  return technologies
 }
 
 const useCalculateLanguages = (repos: Props) => {
