@@ -1,7 +1,12 @@
 import { useMemo } from 'react'
 
 import { Language, Repository } from '@/types/GithubData'
-import { parsePackageJsonList } from '@/utils/parsers'
+import {
+  parseComposerList,
+  parseGemfileList,
+  parsePackageJsonList,
+  parseRequirementsList,
+} from '@/utils/parsers'
 
 type Props = Repository[] | undefined
 
@@ -40,9 +45,10 @@ const caculateTechnologies = (repos: Props) => {
 
   const technologiesUsed = {
     ...parsePackageJsonList(dependenciesLists.packageJsonList),
-    //TODO add other parse methods
+    ...parseRequirementsList(dependenciesLists.requirementsList),
+    ...parseGemfileList(dependenciesLists.gemfileList),
+    ...parseComposerList(dependenciesLists.composerList),
   }
-
   return technologiesUsed
 }
 
