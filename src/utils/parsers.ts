@@ -21,7 +21,7 @@ export const parsePackageJsonList = (content: string[]) => {
   return technologiesCount
 }
 
-export const parseRequirementsList = (content: string[]) => {
+export const parseRequirementsTxtList = (content: string[]) => {
   const packageNamePattern = /^([\w-]+)(?:[=<>!~]+\S+)?/gm
 
   const technologiesCount = content.reduce((acc, cur) => {
@@ -65,7 +65,7 @@ export const parseGemfileList = (content: string[]) => {
   return technologiesCount
 }
 
-export const parseComposerList = (content: string[]) => {
+export const parseComposerJsonList = (content: string[]) => {
   const technologiesCount = content.reduce((acc, cur) => {
     const { require: dependencies, 'require-dev': devDependencies } = JSON.parse(cur)
     const technologies = { ...dependencies, ...devDependencies }

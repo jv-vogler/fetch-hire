@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 
 import { Language, Repository } from '@/types/GithubData'
 import {
-  parseComposerList,
+  parseComposerJsonList,
   parseGemfileList,
   parsePackageJsonList,
-  parseRequirementsList,
+  parseRequirementsTxtList,
 } from '@/utils/parsers'
 
 type Props = Repository[] | undefined
@@ -28,26 +28,26 @@ const caculateTechnologies = (repos: Props) => {
 
   const initialDependenciesList = {
     packageJsonList: [] as string[],
-    requirementsList: [] as string[],
+    requirementsTxtList: [] as string[],
     gemfileList: [] as string[],
-    composerList: [] as string[],
+    composerJsonList: [] as string[],
   }
 
   const dependenciesLists = repos.reduce((acc, repo) => {
     const { packageJson, requirements, gemfile, composer } = repo.node
     packageJson && packageJson.text && acc.packageJsonList.push(packageJson.text)
-    requirements && requirements.text && acc.requirementsList.push(requirements.text)
+    requirements && requirements.text && acc.requirementsTxtList.push(requirements.text)
     gemfile && gemfile.text && acc.gemfileList.push(gemfile.text)
-    composer && composer.text && acc.composerList.push(composer.text)
+    composer && composer.text && acc.composerJsonList.push(composer.text)
 
     return acc
   }, initialDependenciesList)
 
   const technologiesUsed = {
     ...parsePackageJsonList(dependenciesLists.packageJsonList),
-    ...parseRequirementsList(dependenciesLists.requirementsList),
+    ...parseRequirementsTxtList(dependenciesLists.requirementsTxtList),
     ...parseGemfileList(dependenciesLists.gemfileList),
-    ...parseComposerList(dependenciesLists.composerList),
+    ...parseComposerJsonList(dependenciesLists.composerJsonList),
   }
   return technologiesUsed
 }
