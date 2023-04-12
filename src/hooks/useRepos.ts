@@ -44,11 +44,12 @@ const caculateTechnologies = (repos: Props) => {
   }, initialDependenciesList)
 
   const technologiesUsed = {
-    ...parsePackageJsonList(dependenciesLists.packageJsonList),
-    ...parseRequirementsTxtList(dependenciesLists.requirementsTxtList),
-    ...parseGemfileList(dependenciesLists.gemfileList),
-    ...parseComposerJsonList(dependenciesLists.composerJsonList),
+    javascript: parsePackageJsonList(dependenciesLists.packageJsonList),
+    python: parseRequirementsTxtList(dependenciesLists.requirementsTxtList),
+    ruby: parseGemfileList(dependenciesLists.gemfileList),
+    php: parseComposerJsonList(dependenciesLists.composerJsonList),
   }
+
   return technologiesUsed
 }
 
