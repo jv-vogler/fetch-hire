@@ -30,6 +30,11 @@ const javascriptTechnologies: TechnologyList = {
     description:
       'Astro is a modern site builder with web best practices, performance, and DX front-of-mind.',
   },
+  ember: {
+    package: 'ember',
+    name: 'Ember.js',
+    description: 'A framework for ambitious web developers',
+  },
 
   /***
    * BACKEND
@@ -49,9 +54,39 @@ const javascriptTechnologies: TechnologyList = {
     name: 'Firebase',
     description: 'Firebase JavaScript library for web and Node.js',
   },
+  '@nestjs/core': {
+    package: '@nestjs/core',
+    name: 'Nest.js',
+    description:
+      'A progressive Node.js framework for building scalable and maintainable server-side applications.',
+  },
+
+  /**
+   * NETWORKING
+   */
+  axios: {
+    package: 'axios',
+    name: 'Axios',
+    description: 'Promise based HTTP client for the browser and Node.js',
+  },
+  request: {
+    package: 'request',
+    name: 'Request',
+    description: 'Simplified HTTP client for Node.js',
+  },
+  graphql: {
+    package: 'graphql',
+    name: 'GraphQL',
+    description: 'A query language for your API',
+  },
+  'apollo-client': {
+    package: 'apollo-client',
+    name: 'Apollo Client',
+    description: 'A fully-featured caching GraphQL client for every UI framework',
+  },
 
   /***
-   * VISUALS
+   * STYLING
    */
   tailwindcss: {
     package: 'tailwindcss',
@@ -81,6 +116,16 @@ const javascriptTechnologies: TechnologyList = {
     description:
       'React components library focused on usability, accessibility and developer experience',
   },
+  bulma: {
+    package: 'bulma',
+    name: 'Bulma',
+    description: 'A modern CSS framework based on Flexbox',
+  },
+  antd: {
+    package: 'antd',
+    name: 'Ant Design',
+    description: 'A design system for enterprise-level Angular applications',
+  },
 
   /**
    * TESTING
@@ -94,6 +139,16 @@ const javascriptTechnologies: TechnologyList = {
     package: 'mocha',
     name: 'Mocha',
     description: 'Simple, flexible, fun test framework',
+  },
+  cypress: {
+    package: 'cypress',
+    name: 'Cypress',
+    description: 'Fast, easy and reliable testing for anything that runs in a browser',
+  },
+  '@testing-library/react': {
+    package: '@testing-library/react',
+    name: 'Testing Library',
+    description: 'Simple and complete testing utilities for React',
   },
 
   /**
@@ -119,9 +174,14 @@ const javascriptTechnologies: TechnologyList = {
     name: 'Jotai',
     description: '👻 Primitive and flexible state management for React',
   },
+  mobx: {
+    package: 'mobx',
+    name: 'MobX',
+    description: 'Simple, scalable state management for JavaScript applications',
+  },
 
   /**
-   * OTHER
+   * DOM MANIPULATION
    */
   jquery: {
     package: 'jquery',
