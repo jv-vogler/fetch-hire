@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 
 import { Language, Repository } from '@/types/GithubData'
 import {
-  parseComposerJsonList,
-  parseGemfileList,
-  parsePackageJsonList,
-  parseRequirementsTxtList,
+  parseJavascriptTechs,
+  parsePhpTechs,
+  parsePythonTechs,
+  parseRubyTechs,
 } from '@/utils/parsers'
 
 type Props = Repository[] | undefined
@@ -29,14 +29,16 @@ const caculateTechnologies = (repos: Props) => {
   const initialDependenciesList = {
     packageJsonList: [] as string[],
     requirementsTxtList: [] as string[],
+    environmentYmlList: [] as string[],
     gemfileList: [] as string[],
     composerJsonList: [] as string[],
   }
 
   const dependenciesLists = repos.reduce((acc, repo) => {
-    const { packageJson, requirements, gemfile, composer } = repo.node
+    const { packageJson, requirements, gemfile, composer, environment } = repo.node
     packageJson && packageJson.text && acc.packageJsonList.push(packageJson.text)
     requirements && requirements.text && acc.requirementsTxtList.push(requirements.text)
+    environment && environment.text && acc.environmentYmlList.push(environment.text)
     gemfile && gemfile.text && acc.gemfileList.push(gemfile.text)
     composer && composer.text && acc.composerJsonList.push(composer.text)
 
@@ -44,10 +46,13 @@ const caculateTechnologies = (repos: Props) => {
   }, initialDependenciesList)
 
   const technologiesUsed = {
-    javascript: parsePackageJsonList(dependenciesLists.packageJsonList),
-    python: parseRequirementsTxtList(dependenciesLists.requirementsTxtList),
-    ruby: parseGemfileList(dependenciesLists.gemfileList),
-    php: parseComposerJsonList(dependenciesLists.composerJsonList),
+    javascript: parseJavascriptTechs(dependenciesLists.packageJsonList),
+    python: parsePythonTechs(
+      dependenciesLists.requirementsTxtList,
+      dependenciesLists.environmentYmlList,
+    ),
+    ruby: parseRubyTechs(dependenciesLists.gemfileList),
+    php: parsePhpTechs(dependenciesLists.composerJsonList),
   }
 
   return technologiesUsed
