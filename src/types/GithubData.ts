@@ -62,6 +62,9 @@ export type Repository = {
     requirements: {
       text: string | null
     }
+    environment: {
+      text: string | null
+    }
     gemfile: {
       text: string | null
     }

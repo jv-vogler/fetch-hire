@@ -69,6 +69,11 @@ export const USER_DATA_QUERY = gql`
                 text
               }
             }
+            environment: object(expression: "HEAD:environment.yml") {
+              ... on Blob {
+                text
+              }
+            }
             gemfile: object(expression: "HEAD:Gemfile") {
               ... on Blob {
                 text
