@@ -20,6 +20,6 @@ export const fetchUserData = async (login: string) => {
     return userData
   } catch (error) {
     const clientError = error as ClientError
-    throw new Error(clientError.response.errors && clientError.response.errors[0].message)
+    return clientError.response.data as GithubData
   }
 }
