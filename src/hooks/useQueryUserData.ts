@@ -19,11 +19,13 @@ export const useQueryUserData = (login: string) => {
   }
 
   return useQuery({
-    queryKey: ['user-data', login],
+    queryKey: ['user-data', login.toLowerCase()],
     queryFn: () => fetchUserData(login),
     enabled: !!login,
-    retry: 2,
+    retry: 3,
+    retryDelay: attemptIndex => Math.min(3000 * 2 ** attemptIndex, 30000),
     retryOnMount: true,
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
     cacheTime: CACHE_DURATION_MINS * 60 * 1000,
     staleTime: Infinity,
