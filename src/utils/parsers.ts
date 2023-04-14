@@ -32,16 +32,33 @@ export const parsePhpTechs = (composerJsonList: string[]) => {
   return parseComposerJsonList(composerJsonList)
 }
 
+/*************
+ *  PARSERS  *
+ ************/
 const parsePackageJsonList = (packageJsonList: string[]) => {
-  const technologiesCount = packageJsonList.reduce((acc, cur) => {
-    const { dependencies, devDependencies } = JSON.parse(cur)
+  const validPackageJsonList = packageJsonList.filter(cur => {
+    try {
+      JSON.parse(cur)
+      return true
+    } catch (error) {
+      return false
+    }
+  })
+
+  const technologiesCount = validPackageJsonList.reduce((acc, cur) => {
+    const packageJson = JSON.parse(cur)
+    const dependencies = packageJson['dependencies'] || {}
+    const devDependencies = packageJson['devDependencies'] || {}
     const technologies = { ...dependencies, ...devDependencies }
-    if (!technologies) return acc
+
+    if (Object.keys(technologies).length === 0) return acc
 
     const techsArray = Object.keys(technologies)
 
     for (const tech of techsArray) {
-      if (tech in javascriptTechnologies) acc[tech] ? (acc[tech] += 1) : (acc[tech] = 1)
+      if (tech in javascriptTechnologies) {
+        acc[tech] ? (acc[tech] += 1) : (acc[tech] = 1)
+      }
     }
 
     return acc
@@ -116,15 +133,29 @@ const parseGemfileList = (gemfileList: string[]) => {
 }
 
 const parseComposerJsonList = (composerJsonList: string[]) => {
-  const technologiesCount = composerJsonList.reduce((acc, cur) => {
-    const { require: dependencies, 'require-dev': devDependencies } = JSON.parse(cur)
+  const validComposerJsonList = composerJsonList.filter(cur => {
+    try {
+      JSON.parse(cur)
+      return true
+    } catch (error) {
+      return false
+    }
+  })
+
+  const technologiesCount = validComposerJsonList.reduce((acc, cur) => {
+    const composerJson = JSON.parse(cur)
+    const dependencies = composerJson['require'] || {}
+    const devDependencies = composerJson['require-dev'] || {}
     const technologies = { ...dependencies, ...devDependencies }
-    if (!technologies) return acc
+
+    if (Object.keys(technologies).length === 0) return acc
 
     const techsArray = Object.keys(technologies)
 
     for (const tech of techsArray) {
-      if (tech in phpTechnologies) acc[tech] ? (acc[tech] += 1) : (acc[tech] = 1)
+      if (tech in phpTechnologies) {
+        acc[tech] ? (acc[tech] += 1) : (acc[tech] = 1)
+      }
     }
 
     return acc
