@@ -18,8 +18,13 @@ export const fetchUserData = async (login: string) => {
   try {
     const userData = await graphQLClient.request<GithubData>(USER_DATA_QUERY, { login })
     return userData
-  } catch (error) {
-    const clientError = error as ClientError
-    return clientError.response.data as GithubData
+  } catch (err) {
+    const error = err as ClientError
+
+    if (error.response.status > 200) {
+      throw new Error(error.response.errors && error.response.errors[0].message)
+    } else {
+      return error.response.data as GithubData
+    }
   }
 }
