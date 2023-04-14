@@ -40,6 +40,7 @@ export const USER_DATA_QUERY = gql`
         first: 100
         orderBy: { field: PUSHED_AT, direction: DESC }
       ) {
+        totalCount
         edges {
           node {
             url

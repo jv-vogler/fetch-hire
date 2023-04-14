@@ -41,6 +41,7 @@ export type User = {
     }
   }
   repositories: {
+    totalCount: number
     edges: Repository[]
   }
 }
