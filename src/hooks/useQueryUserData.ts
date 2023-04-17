@@ -25,7 +25,7 @@ export const useQueryUserData = (login: string) => {
     retryOnMount: true,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
-    cacheTime: CACHE_DURATION_MINS * 60 * 1000,
+    cacheTime: CACHE_DURATION_MINS * 24 * 60 * 1000,
     staleTime: Infinity,
   })
 
