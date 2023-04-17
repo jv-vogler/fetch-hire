@@ -57,6 +57,7 @@ export const useQueryUserData = (login: string) => {
     setError(null)
   }, [data?.user, login, rqError, rqStatus])
 
+  // Persist cache to IndexedDB
   if (typeof window !== 'undefined') {
     const idbPersister = createIDBPersister('git-hire-cache')
 
