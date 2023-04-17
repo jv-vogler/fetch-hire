@@ -1,3 +1,3 @@
-# GitHire
+# FetchHire
 
 WIP
