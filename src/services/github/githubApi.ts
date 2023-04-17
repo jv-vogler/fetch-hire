@@ -13,8 +13,6 @@ const graphQLClient = new GraphQLClient(GITHUB_API_BASE_URL, {
 })
 
 export const fetchUserData = async (login: string) => {
-  if (!login) return
-
   try {
     const userData = await graphQLClient.request<GithubData>(USER_DATA_QUERY, { login })
     return userData
