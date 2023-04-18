@@ -21,7 +21,7 @@ export const useQueryUserData = (login: string) => {
     queryFn: () => fetchUserData(login),
     enabled: !!login,
     retry: 3,
-    retryDelay: 12 * 1000,
+    retryDelay: attemptIndex => Math.min(1500 * 8 ** attemptIndex, 12000),
     retryOnMount: true,
     refetchOnMount: true,
     refetchOnWindowFocus: false,
