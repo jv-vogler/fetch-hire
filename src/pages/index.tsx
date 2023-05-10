@@ -1,15 +1,14 @@
-import Head from 'next/head'
+import Searchbar from '@/components/Searchbar'
 
-export default function Home() {
+const Home = () => {
   return (
-    <>
-      <Head>
-        <title>GitHire</title>
-        <meta name="description" content="Find useful info about Github users." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main></main>
-    </>
+    <div className="flex flex-col p-4 text-zinc-300">
+      {/* <Navbar /> */}
+      <div className="flex flex-col items-center">
+        <Searchbar />
+      </div>
+      {/* <Footer /> */}
+    </div>
   )
 }
+export default Home
