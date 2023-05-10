@@ -1,9 +1,13 @@
-import { FormEvent, useRef, useState } from 'react'
+import { Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react'
 
 import { extractGitHubUsername } from '@/utils/utils'
 
-const Searchbar = () => {
-  const [searchInput, setSearchInput] = useState('')
+type Props = {
+  setGithubUser: Dispatch<SetStateAction<string>>
+}
+
+const Searchbar = ({ setGithubUser }: Props) => {
+  const [searchInputValue, setSearchInputValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -11,16 +15,16 @@ const Searchbar = () => {
     e.preventDefault()
     inputRef.current?.blur()
     buttonRef.current?.blur()
-    console.log(extractGitHubUsername(searchInput))
+    setGithubUser(extractGitHubUsername(searchInputValue))
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value)
+    setSearchInputValue(e.target.value)
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col items-center gap-2">
-      <label className="-translate-x-5">
+    <form onSubmit={onSubmit} className="flex flex-col items-center gap-2 p-2">
+      <label className="-translate-x-3">
         Paste a Github <strong className="text-orange-400">username</strong> or{' '}
         <strong className="text-orange-400">URL</strong>.
       </label>
@@ -31,7 +35,7 @@ const Searchbar = () => {
           ref={inputRef}
           spellCheck={false}
           onChange={onChange}
-          value={searchInput}
+          value={searchInputValue}
         />
         <button
           className="rounded-r-lg bg-zinc-500 px-2 font-bold text-white outline-none ring-inset transition-all duration-300 focus:ring-2 focus:ring-orange-400"
