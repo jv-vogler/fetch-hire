@@ -53,6 +53,30 @@ const UserData = ({ data, languages, technologies }: Props) => {
             following
           </div>
         </div>
+        <div className="flex flex-col gap-2">
+          <h2 className="mt-2">Most used languages:</h2>
+          {languages
+            ?.filter(lang => parseFloat(lang.percentage) >= 0.1)
+            .map(lang => (
+              <div key={lang.name}>
+                <div>
+                  <h3>
+                    {lang.name} · {parseFloat(lang.percentage).toFixed(1)}%
+                  </h3>
+                  <div>
+                    <div
+                      className="h-2 rounded-full"
+                      style={{
+                        backgroundColor: `${lang.color}`,
+                        width: `${parseFloat(lang.percentage)}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div>Technologies</div>
       </div>
     </div>
   )
