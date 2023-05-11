@@ -4,6 +4,8 @@ import Image from 'next/image'
 
 import { GithubData } from '@/types/GithubData'
 
+import Technologies from './Technologies'
+
 type Props = {
   data?: GithubData
   languages?: {
@@ -54,9 +56,11 @@ const UserData = ({ data, languages, technologies }: Props) => {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <h2 className="mt-2">Most used languages:</h2>
+          <h2 className="mt-2 w-fit font-bold">
+            Most used <span className="text-orange-500">languages</span> :
+          </h2>
           {languages
-            ?.filter(lang => parseFloat(lang.percentage) >= 0.1)
+            ?.filter(lang => parseFloat(lang.percentage) >= 1.0)
             .map(lang => (
               <div key={lang.name}>
                 <div>
@@ -68,7 +72,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
                       className="h-2 rounded-full"
                       style={{
                         backgroundColor: `${lang.color}`,
-                        width: `${parseFloat(lang.percentage)}%`,
+                        width: `${parseFloat(lang.percentage) * 0.7}%`,
                       }}
                     />
                   </div>
@@ -76,7 +80,12 @@ const UserData = ({ data, languages, technologies }: Props) => {
               </div>
             ))}
         </div>
-        <div>Technologies</div>
+        <div>
+          <h2 className="my-4 w-fit font-bold">
+            Most used <span className="text-orange-500">technologies</span> :
+          </h2>
+          <Technologies technologies={technologies} />
+        </div>
       </div>
     </div>
   )
