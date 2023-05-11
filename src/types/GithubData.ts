@@ -25,6 +25,9 @@ export type User = {
   followers: {
     totalCount: number
   }
+  following: {
+    totalCount: number
+  }
   websiteUrl: string | null
   socialAccounts: {
     nodes: {

@@ -17,6 +17,9 @@ export const USER_DATA_QUERY = gql`
       followers {
         totalCount
       }
+      following {
+        totalCount
+      }
       websiteUrl
       socialAccounts(first: 10) {
         nodes {
