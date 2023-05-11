@@ -13,8 +13,6 @@ const Searchbar = ({ setGithubUser }: Props) => {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
-    inputRef.current?.blur()
-    buttonRef.current?.blur()
     setGithubUser(extractGitHubUsername(searchInputValue))
   }
 
