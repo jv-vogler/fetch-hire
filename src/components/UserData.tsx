@@ -44,15 +44,15 @@ const UserData = ({ data, languages, technologies }: Props) => {
               </div>
             </div>
           </div>
-          <p className="p-2 text-sm">{data?.user.bio}</p>
-        </div>
-        <div>
-          <div className="flex items-center gap-1 text-xs text-zinc-400">
-            <MdOutlinePeople fontSize={20} />{' '}
-            <span className=" font-bold text-white">{data?.user.followers.totalCount}</span>{' '}
-            followers ·{' '}
-            <span className=" font-bold text-white">{data?.user.following.totalCount}</span>{' '}
-            following
+          <p className="max-w-sm p-2 text-sm">{data?.user.bio}</p>
+          <div>
+            <div className="flex items-center gap-1 text-xs text-zinc-400">
+              <MdOutlinePeople fontSize={20} />{' '}
+              <span className=" font-bold text-white">{data?.user.followers.totalCount}</span>{' '}
+              followers ·{' '}
+              <span className=" font-bold text-white">{data?.user.following.totalCount}</span>{' '}
+              following
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-2">
