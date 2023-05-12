@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import javascriptTechnologies from '@/technologies/javascript'
 import phpTechnologies from '@/technologies/php'
 import pythonTechnologies from '@/technologies/python'
@@ -19,7 +17,6 @@ const Technologies = ({ technologies }: Props) => {
   const userPythonTechnologies = Object.entries(technologies?.python || {})
   const userRubyTechnologies = Object.entries(technologies?.ruby || {})
   const userPhpTechnologies = Object.entries(technologies?.php || {})
-  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <div className="flex flex-wrap gap-6">
