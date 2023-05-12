@@ -27,16 +27,22 @@ const UserData = ({ data, languages, technologies }: Props) => {
       <div className="flex flex-col gap-4">
         <div>
           <div className="flex w-full items-center gap-4 p-0">
-            <Image
-              src={data?.user.avatarUrl || ''}
-              alt="avatar"
-              width={70}
-              height={70}
-              className="rounded-full"
-            />
+            <a href={`https://github.com/${data?.user.login}`} target="_blank">
+              <Image
+                src={data?.user.avatarUrl || ''}
+                alt="avatar"
+                width={70}
+                height={70}
+                className="rounded-full"
+              />
+            </a>
             <div className="flex flex-col gap-2">
               <div>
-                <h1 className="text-lg font-bold">{data?.user.name}</h1>
+                <a href={`https://github.com/${data?.user.login}`} target="_blank">
+                  <h1 className="text-lg font-bold transition-colors duration-300 hover:text-orange-400">
+                    {data?.user.name}
+                  </h1>
+                </a>
                 <h2 className="-translate-y-1 text-sm text-zinc-400">
                   <span>{data?.user.login}</span>
                   {data?.user.pronouns && <span> · {data.user.pronouns}</span>}
@@ -57,7 +63,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
         </div>
         <div className="flex flex-col gap-2">
           <h2 className="mt-2 w-fit font-bold">
-            Most used <span className="text-orange-500">languages</span> :
+            Most used <span className="text-orange-400">languages</span> :
           </h2>
           {languages
             ?.filter(lang => parseFloat(lang.percentage) >= 1.0)
@@ -82,7 +88,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
         </div>
         <div>
           <h2 className="my-4 w-fit font-bold">
-            Most used <span className="text-orange-500">technologies</span> :
+            Most used <span className="text-orange-400">technologies</span> :
           </h2>
           <Technologies technologies={technologies} />
         </div>

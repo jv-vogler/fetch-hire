@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-8 p-4 text-zinc-300">
       <h1 className="select-none p-2 text-3xl font-bold">
-        <span className="border-b-4 border-orange-500">FetchHire</span>
+        <span className="border-b-4 border-orange-400">FetchHire</span>
       </h1>
       <div className="flex flex-col items-center gap-8">
         <Searchbar setGithubUser={setGithubUser} />
