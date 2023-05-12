@@ -4,9 +4,10 @@ import { extractGitHubUsername } from '@/utils/utils'
 
 type Props = {
   setGithubUser: Dispatch<SetStateAction<string>>
+  status: 'success' | 'error' | 'loading'
 }
 
-const Searchbar = ({ setGithubUser }: Props) => {
+const Searchbar = ({ setGithubUser, status }: Props) => {
   const [searchInputValue, setSearchInputValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -36,8 +37,9 @@ const Searchbar = ({ setGithubUser }: Props) => {
           value={searchInputValue}
         />
         <button
-          className="rounded-r-lg bg-zinc-500 px-2 font-bold text-white outline-none ring-inset transition-all duration-300 focus:ring-2 focus:ring-orange-400"
+          className="rounded-r-lg bg-zinc-500 px-2 font-bold text-white outline-none ring-inset transition-all duration-300 hover:text-orange-400 focus:ring-2 focus:ring-orange-400 disabled:text-zinc-400"
           ref={buttonRef}
+          disabled={status === 'loading'}
         >
           Fetch!
         </button>

@@ -16,7 +16,7 @@ const Home = () => {
         <span className="border-b-4 border-orange-400">FetchHire</span>
       </h1>
       <div className="flex flex-col items-center gap-8">
-        <Searchbar setGithubUser={setGithubUser} />
+        <Searchbar setGithubUser={setGithubUser} status={status} />
         {data?.user && (
           <UserData data={data} languages={languages} technologies={technologies} />
         )}{' '}
