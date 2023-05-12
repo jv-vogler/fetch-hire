@@ -23,11 +23,11 @@ type Props = {
 
 const UserData = ({ data, languages, technologies }: Props) => {
   return (
-    <div className="container flex flex-col items-center gap-2">
+    <div className="flex flex-col gap-2 sm:w-96 sm:p-4">
       <div className="flex flex-col gap-4">
         <div>
           <a href={`https://github.com/${data?.user.login}`} target="_blank">
-            <div className="flex w-full items-center gap-4 p-0">
+            <div className="flex items-center gap-4 p-0">
               <Image
                 src={data?.user.avatarUrl || ''}
                 alt="avatar"
@@ -83,7 +83,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
             ))}
         </div>
         <div>
-          <h2 className="my-4 w-fit font-bold">
+          <h2 className="mb-2 mt-4 font-bold">
             Most used <span className="text-orange-400">technologies</span> :
           </h2>
           <Technologies technologies={technologies} />
