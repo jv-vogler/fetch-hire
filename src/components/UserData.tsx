@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { GithubData } from '@/types/GithubData'
 
 import Languages from './Languages'
+import SocialAccounts from './SocialAccounts'
 import Technologies from './Technologies'
 
 type Props = {
@@ -58,6 +59,11 @@ const UserData = ({ data, languages, technologies }: Props) => {
             </div>
           </div>
         </div>
+
+        <div className="flex gap-2">
+          <SocialAccounts email={data?.user.email} links={data?.user.socialAccounts.nodes} />
+        </div>
+
         <div className="flex flex-col gap-2">
           <h2 className="mt-2 w-fit font-bold">
             Most used <span className="text-orange-400">languages</span> :
