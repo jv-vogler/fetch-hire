@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import { GithubData } from '@/types/GithubData'
 
+import Languages from './Languages'
 import Technologies from './Technologies'
 
 type Props = {
@@ -61,26 +62,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
           <h2 className="mt-2 w-fit font-bold">
             Most used <span className="text-orange-400">languages</span> :
           </h2>
-          {languages
-            ?.filter(lang => parseFloat(lang.percentage) >= 1.0)
-            .map(lang => (
-              <div key={lang.name}>
-                <div>
-                  <h3>
-                    {lang.name} · {parseFloat(lang.percentage).toFixed(1)}%
-                  </h3>
-                  <div>
-                    <div
-                      className="h-2 rounded-full"
-                      style={{
-                        backgroundColor: `${lang.color}`,
-                        width: `${parseFloat(lang.percentage) * 0.7}%`,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
+          <Languages languages={languages} />
         </div>
         <div>
           <h2 className="mb-2 mt-4 font-bold">
