@@ -1,3 +1,6 @@
+import { AiFillCheckCircle } from 'react-icons/ai'
+import { AiOutlineLink } from 'react-icons/ai'
+import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { MdOutlinePeople } from 'react-icons/md'
 
 import Image from 'next/image'
@@ -28,8 +31,8 @@ const UserData = ({ data, languages, technologies }: Props) => {
     <div className="flex flex-col gap-2 sm:w-96 sm:p-4">
       <div className="flex flex-col gap-4">
         <div>
-          <a href={`https://github.com/${data?.user.login}`} target="_blank">
-            <div className="flex items-center gap-4 p-0">
+          <div className="flex items-center gap-4">
+            <a href={`https://github.com/${data?.user.login}`} target="_blank">
               <Image
                 src={data?.user.avatarUrl || ''}
                 alt="avatar"
@@ -37,31 +40,63 @@ const UserData = ({ data, languages, technologies }: Props) => {
                 height={70}
                 className="rounded-full"
               />
-              <div className="flex flex-col gap-2">
-                <div>
+            </a>
+
+            <div className="flex flex-col gap-2">
+              <div>
+                <a href={`https://github.com/${data?.user.login}`} target="_blank">
                   <h1 className="text-lg font-bold">{data?.user.name}</h1>
-                  <h2 className="-translate-y-1 text-sm text-zinc-400">
-                    <span>{data?.user.login}</span>
-                    {data?.user.pronouns && <span> · {data.user.pronouns}</span>}
-                  </h2>
-                </div>
+                </a>
+                <h2 className="-translate-y-1 text-sm text-zinc-400">
+                  <span>{data?.user.login}</span>
+                  {data?.user.pronouns && <span> · {data.user.pronouns}</span>}
+                </h2>
               </div>
             </div>
-          </a>
+          </div>
+
           <p className="max-w-sm p-2 text-sm">{data?.user.bio}</p>
+
           <div>
-            <div className="flex items-center gap-1 text-xs text-zinc-400">
-              <MdOutlinePeople fontSize={20} className="-translate-y-0.5" />{' '}
-              <span className="font-bold text-white">{data?.user.followers.totalCount}</span>{' '}
-              followers ·{' '}
-              <span className="font-bold text-white">{data?.user.following.totalCount}</span>{' '}
-              following
+            <div className="flex flex-col gap-1 text-xs text-zinc-400">
+              <div className="flex items-center gap-1">
+                <MdOutlinePeople fontSize={20} className="-translate-y-0.5" />{' '}
+                <span className="font-bold text-white">{data?.user.followers.totalCount}</span>
+                followers ·
+                <span className="font-bold text-white">{data?.user.following.totalCount}</span>
+                following
+              </div>
+              {data?.user.location && (
+                <div className="flex items-center gap-1 text-zinc-300">
+                  <HiOutlineLocationMarker fontSize={18} className="text-zinc-400" />
+                  <p className="text-sm">{data?.user.location}</p>
+                </div>
+              )}
+              {data?.user.websiteUrl && (
+                <div className="flex items-center gap-1">
+                  <AiOutlineLink fontSize={18} className="cursor-pointer text-zinc-400" />
+                  <a className="text-zinc-300" href={data.user.websiteUrl} target="_blank">
+                    {data.user.websiteUrl}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <SocialAccounts email={data?.user.email} links={data?.user.socialAccounts.nodes} />
+        {data?.user.email && data.user.socialAccounts.nodes && (
+          <div className="flex gap-2">
+            <SocialAccounts email={data?.user.email} links={data?.user.socialAccounts.nodes} />
+          </div>
+        )}
+
+        <div>
+          {data?.user.isHireable && (
+            <div className="flex items-center gap-1 font-bold text-green-500">
+              <p>Hireable</p> <AiFillCheckCircle fontSize={20} />
+            </div>
+          )}
+          {}
         </div>
 
         <div className="flex flex-col gap-2">
@@ -70,6 +105,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
           </h2>
           <Languages languages={languages} />
         </div>
+
         <div>
           <h2 className="mb-2 mt-4 font-bold">
             Most used <span className="text-orange-400">technologies</span> :
