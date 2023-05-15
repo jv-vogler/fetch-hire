@@ -1,6 +1,6 @@
 import { AiFillCheckCircle } from 'react-icons/ai'
 import { AiOutlineLink } from 'react-icons/ai'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
+import { HiOutlineLocationMarker, HiOutlineOfficeBuilding } from 'react-icons/hi'
 import { MdOutlinePeople } from 'react-icons/md'
 
 import Image from 'next/image'
@@ -66,6 +66,12 @@ const UserData = ({ data, languages, technologies }: Props) => {
                 <span className="font-bold text-white">{data?.user.following.totalCount}</span>
                 following
               </div>
+              {data?.user.company && (
+                <div className="flex items-center gap-1">
+                  <HiOutlineOfficeBuilding fontSize={18} className="text-zinc-400" />
+                  <p className="text-sm text-zinc-300">{data.user.company}</p>
+                </div>
+              )}
               {data?.user.location && (
                 <div className="flex items-center gap-1 text-zinc-300">
                   <HiOutlineLocationMarker fontSize={18} className="text-zinc-400" />
@@ -96,7 +102,14 @@ const UserData = ({ data, languages, technologies }: Props) => {
               <p>Hireable</p> <AiFillCheckCircle fontSize={20} />
             </div>
           )}
-          {}
+        </div>
+
+        <hr className="bottom-2 border-zinc-500" />
+
+        <div>
+          {data?.user.name} has{' '}
+          <span className="font-bold text-orange-400">{data?.user.repositories.totalCount}</span>{' '}
+          public repositories.
         </div>
 
         <div className="flex flex-col gap-2">
