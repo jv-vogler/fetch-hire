@@ -31,7 +31,7 @@ const Technologies = ({ technologies }: Props) => {
                   <div className="z-10 w-fit rounded-l-full bg-yellow-500 px-2 text-gray-950">
                     {javascriptTechnologies[tech].name}
                   </div>
-                  <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-gray-950 p-3 font-bold text-yellow-500">
+                  <p className="flex h-4 w-fit items-center justify-center rounded-r-full bg-gray-950 px-1.5 py-3 font-bold text-yellow-500">
                     {timesUsed}
                   </p>
                 </div>

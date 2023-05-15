@@ -51,10 +51,10 @@ const UserData = ({ data, languages, technologies }: Props) => {
           <p className="max-w-sm p-2 text-sm">{data?.user.bio}</p>
           <div>
             <div className="flex items-center gap-1 text-xs text-zinc-400">
-              <MdOutlinePeople fontSize={20} />{' '}
-              <span className=" font-bold text-white">{data?.user.followers.totalCount}</span>{' '}
+              <MdOutlinePeople fontSize={20} className="-translate-y-0.5" />{' '}
+              <span className="font-bold text-white">{data?.user.followers.totalCount}</span>{' '}
               followers ·{' '}
-              <span className=" font-bold text-white">{data?.user.following.totalCount}</span>{' '}
+              <span className="font-bold text-white">{data?.user.following.totalCount}</span>{' '}
               following
             </div>
           </div>
