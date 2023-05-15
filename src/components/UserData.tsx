@@ -112,19 +112,22 @@ const UserData = ({ data, languages, technologies }: Props) => {
           public repositories.
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h2 className="mt-2 w-fit font-bold">
-            Most used <span className="text-orange-400">languages</span> :
-          </h2>
-          <Languages languages={languages} />
-        </div>
-
-        <div>
-          <h2 className="mb-2 mt-4 font-bold">
-            Most used <span className="text-orange-400">technologies</span> :
-          </h2>
-          <Technologies technologies={technologies} />
-        </div>
+        {data?.user.repositories.totalCount !== 0 && (
+          <>
+            <div className="flex flex-col gap-2">
+              <h2 className="mt-2 w-fit font-bold">
+                Most used <span className="text-orange-400">languages</span> :
+              </h2>
+              <Languages languages={languages} />
+            </div>
+            <div>
+              <h2 className="mb-2 mt-4 font-bold">
+                Most used <span className="text-orange-400">technologies</span> :
+              </h2>
+              <Technologies technologies={technologies} />
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
