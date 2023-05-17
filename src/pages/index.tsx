@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MagnifyingGlass } from 'react-loader-spinner'
 
 import Searchbar from '@/components/Searchbar'
 import UserData from '@/components/UserData'
@@ -20,9 +21,28 @@ const Home = () => {
 
       <div className="mt-16 flex flex-col items-center gap-8 p-4">
         <Searchbar setGithubUser={setGithubUser} status={status} />
-        {data?.user && (
-          <UserData data={data} languages={languages} technologies={technologies} />
-        )}{' '}
+        {status === 'error' && (
+          <div className="-translate-y-7 text-sm text-red-500">
+            User <span className="font-bold">{githubUser}</span> not found.
+          </div>
+        )}
+
+        {status === 'loading' && (
+          <div className="-translate-y-5">
+            <MagnifyingGlass
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="MagnifyingGlass-loading"
+              wrapperStyle={{}}
+              wrapperClass="MagnifyingGlass-wrapper"
+              glassColor="#c0efff"
+              color="#FB923C"
+            />
+          </div>
+        )}
+
+        {data?.user && <UserData data={data} languages={languages} technologies={technologies} />}
       </div>
     </div>
   )
