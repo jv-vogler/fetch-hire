@@ -10,6 +10,8 @@ const graphQLClient = new GraphQLClient(GITHUB_API_BASE_URL, {
   headers: {
     Authorization: `Bearer ${TOKEN}`,
   },
+  referrerPolicy: 'strict-origin-when-cross-origin',
+  mode: 'cors',
 })
 
 export const fetchUserData = async (login: string) => {
