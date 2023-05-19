@@ -1,12 +1,12 @@
 # [FetchHire](https://fetch-hire.vercel.app/)
 
-[![pt](https://img.shields.io/badge/README%20em-português-brightgreen.svg)](../main/README.pt.md)
+[![en](https://img.shields.io/badge/README%20in-english-red.svg)](../main/README.md)
 
-A tool to get helpful insight and data about Github users.
+Uma ferramenta para obter informações úteis sobre usuários do Github.
 
-### [**Live Page**](https://fetch-hire.vercel.app/)
+### [**Página ao vivo**](https://fetch-hire.vercel.app/)
 
-## Tools used
+## Ferramentas usadas
 
 [<img alt="Visual Studio Code" width="50px" style="padding-right: 10px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />](https://code.visualstudio.com/ 'Visual Studio Code')
 [<img  alt="ReactJS" width="50px" style="padding-right: 10px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" />](https://reactjs.org/ 'ReactJS')
@@ -16,13 +16,13 @@ A tool to get helpful insight and data about Github users.
 
 VSCode | React | TypeScript | Next.js | TailwindCSS
 
-## About the project
+## Sobre o projeto
 
-The goal of _FetchHire_ is to help tech recruiters find useful information about a specific Github user such as their most used programming languages, technologies, and more.
+O objetivo do _FetchHire_ é ajudar tech recruiters a encontrar informações úteis sobre um usuário Github específico como as linguagens de programação mais usadas, tecnologias, e mais.
 
-The app uses Github's GraphQL API to analyze up to 100 of the user's personal repositories, meaning it does not take forks into account. It then checks for a few of the most relevant technologies for Javascript, Python, Ruby and PHP ecosystems for the time being.
+O app usa a API GraphQL do Github e analisa até 100 dos repositórios pessoais do usuário, ou seja, não considera forks. Ele checa por algumas das tecnologias mais relevantes para os ecossistemas de Javascript, Python, Ruby e PHP.
 
-## Licence
+## Licença
 
-[MIT](https://choosealicense.com/licenses/mit/) License.
-All rights reserved &copy; 2023 JV Vogler.
+Licença [MIT](https://choosealicense.com/licenses/mit/).
+Todos os direitos reservados &copy; 2023 JV Vogler.
