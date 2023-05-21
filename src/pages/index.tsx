@@ -13,7 +13,7 @@ const Home = () => {
   const { languages, technologies } = useRepos(data?.user && data?.user.repositories.edges)
 
   return (
-    <div className="flex flex-col gap-8 text-zinc-300">
+    <div className="flex h-screen flex-col gap-8 text-zinc-300">
       <div className="fixed z-50 h-20 w-full bg-gradient-to-b from-zinc-900 via-[#232526] via-50% to-transparent">
         <h1 className="select-none p-2 text-3xl font-bold">
           <span className="border-b-4 border-orange-400">FetchHire</span>

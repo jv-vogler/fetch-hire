@@ -2,7 +2,7 @@ import { AiFillGithub } from 'react-icons/ai'
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center border-t border-zinc-600 p-4">
+    <footer className="mt-auto flex justify-center border-t border-zinc-600 p-4">
       <div className="flex items-center gap-2">
         Made by{' '}
         <a
