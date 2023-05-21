@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MagnifyingGlass } from 'react-loader-spinner'
 
+import Footer from '@/components/Footer'
 import Searchbar from '@/components/Searchbar'
 import UserData from '@/components/UserData'
 import { useQueryUserData } from '@/hooks/useQueryUserData'
@@ -41,9 +42,10 @@ const Home = () => {
             />
           </div>
         )}
-
         {data?.user && <UserData data={data} languages={languages} technologies={technologies} />}
       </div>
+
+      <Footer />
     </div>
   )
 }
