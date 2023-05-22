@@ -1,8 +1,11 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import { Poppins } from 'next/font/google'
+import { appWithI18Next } from 'ni18n'
 
 import '@/styles/globals.css'
+
+import { ni18nConfig } from '../../ni18n.config'
 
 const poppins = Poppins({
   weight: '400',
@@ -11,7 +14,7 @@ const poppins = Poppins({
 
 const queryClient = new QueryClient()
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <>
@@ -25,3 +28,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </QueryClientProvider>
   )
 }
+
+export default appWithI18Next(App, ni18nConfig)
