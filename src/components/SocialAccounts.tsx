@@ -31,7 +31,7 @@ const SocialAccounts = ({ email, links }: Props) => {
         switch (link.provider) {
           case 'LINKEDIN':
             return (
-              <a href={link.url} target="_blank">
+              <a key={link.url} href={link.url} target="_blank">
                 <AiFillLinkedin
                   fontSize={30}
                   className="cursor-pointer text-zinc-500 transition-colors duration-300 hover:text-zinc-200"
@@ -40,7 +40,7 @@ const SocialAccounts = ({ email, links }: Props) => {
             )
           case 'FACEBOOK':
             return (
-              <a href={link.url} target="_blank">
+              <a key={link.url} href={link.url} target="_blank">
                 <AiFillFacebook
                   fontSize={30}
                   className="cursor-pointer text-zinc-500 transition-colors duration-300 hover:text-zinc-200"
@@ -49,7 +49,7 @@ const SocialAccounts = ({ email, links }: Props) => {
             )
           case 'INSTAGRAM':
             return (
-              <a href={link.url} target="_blank">
+              <a key={link.url} href={link.url} target="_blank">
                 <AiFillInstagram
                   fontSize={30}
                   className="cursor-pointer text-zinc-500 transition-colors duration-300 hover:text-zinc-200"
@@ -58,7 +58,7 @@ const SocialAccounts = ({ email, links }: Props) => {
             )
           case 'TWITTER':
             return (
-              <a href={link.url} target="_blank">
+              <a key={link.url} href={link.url} target="_blank">
                 <AiFillTwitterSquare
                   fontSize={30}
                   className="cursor-pointer text-zinc-500 transition-colors duration-300 hover:text-zinc-200"
@@ -67,7 +67,7 @@ const SocialAccounts = ({ email, links }: Props) => {
             )
           case 'YOUTUBE':
             return (
-              <a href={link.url} target="_blank">
+              <a key={link.url} href={link.url} target="_blank">
                 <AiFillYoutube
                   fontSize={30}
                   className="cursor-pointer text-zinc-500 transition-colors duration-300 hover:text-zinc-200"
@@ -76,7 +76,7 @@ const SocialAccounts = ({ email, links }: Props) => {
             )
           case 'GENERIC':
             return (
-              <a href={link.url} target="_blank">
+              <a key={link.url} href={link.url} target="_blank">
                 <AiOutlineLink
                   fontSize={30}
                   className="cursor-pointer text-zinc-500 transition-colors duration-300 hover:text-zinc-200"
