@@ -1,4 +1,9 @@
 {
   "Fetch": "Fetch",
-  "Made by": "Made by"
+  "Made by": "Made by",
+  "followers": "followers",
+  "following": "following",
+  "Hireable": "Hireable",
+  "has": "has",
+  "public repositories": "public repositories"
 }

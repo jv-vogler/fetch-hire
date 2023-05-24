@@ -1,4 +1,9 @@
 {
   "Fetch": "Buscar",
-  "Made by": "Feito por"
+  "Made by": "Feito por",
+  "followers": "seguidores",
+  "following": "seguindo",
+  "Hireable": "Disponível",
+  "has": "tem",
+  "public repositories": "repositórios públicos"
 }

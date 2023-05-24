@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { AiFillCheckCircle } from 'react-icons/ai'
 import { AiOutlineLink } from 'react-icons/ai'
 import { HiOutlineLocationMarker, HiOutlineOfficeBuilding } from 'react-icons/hi'
@@ -27,6 +28,8 @@ type Props = {
 }
 
 const UserData = ({ data, languages, technologies }: Props) => {
+  const { t, i18n } = useTranslation()
+
   return (
     <div className="flex flex-col gap-2 sm:w-96 sm:p-4">
       <div className="flex flex-col gap-4">
@@ -62,9 +65,9 @@ const UserData = ({ data, languages, technologies }: Props) => {
               <div className="flex items-center gap-1">
                 <MdOutlinePeople fontSize={20} className="-translate-y-0.5" />{' '}
                 <span className="font-bold text-white">{data?.user.followers.totalCount}</span>
-                followers ·
+                {t('followers')} ·
                 <span className="font-bold text-white">{data?.user.following.totalCount}</span>
-                following
+                {t('following')}
               </div>
               {data?.user.company && (
                 <div className="flex items-center gap-1">
@@ -99,7 +102,7 @@ const UserData = ({ data, languages, technologies }: Props) => {
         <div>
           {data?.user.isHireable && (
             <div className="flex items-center gap-1 font-bold text-green-500">
-              <p>Hireable</p> <AiFillCheckCircle fontSize={20} />
+              <p>{t('Hireable')}</p> <AiFillCheckCircle fontSize={20} />
             </div>
           )}
         </div>
@@ -107,22 +110,38 @@ const UserData = ({ data, languages, technologies }: Props) => {
         <hr className="bottom-2 border-zinc-500" />
 
         <div>
-          {data?.user.name} has{' '}
+          {data?.user.name} {t('has')}{' '}
           <span className="font-bold text-orange-400">{data?.user.repositories.totalCount}</span>{' '}
-          public repositories.
+          {t('public repositories')}.
         </div>
 
         {data?.user.repositories.totalCount !== 0 && (
           <>
             <div className="flex flex-col gap-2">
               <h2 className="mt-2 w-fit font-bold">
-                Most used <span className="text-orange-400">languages</span> :
+                {i18n.language === 'en' ? (
+                  <>
+                    Most used <span className="text-orange-400">languages</span> :
+                  </>
+                ) : (
+                  <>
+                    <span className="text-orange-400">Linguagens</span> mais usadas :
+                  </>
+                )}
               </h2>
               <Languages languages={languages} />
             </div>
             <div>
               <h2 className="mb-2 mt-4 font-bold">
-                Most used <span className="text-orange-400">technologies</span> :
+                {i18n.language === 'en' ? (
+                  <>
+                    Most used <span className="text-orange-400">technologies</span> :
+                  </>
+                ) : (
+                  <>
+                    <span className="text-orange-400">Tecnologias</span> mais usadas :
+                  </>
+                )}
               </h2>
               <Technologies technologies={technologies} />
             </div>
