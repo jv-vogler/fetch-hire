@@ -1,10 +1,13 @@
+import { useTranslation } from 'react-i18next'
 import { AiFillGithub } from 'react-icons/ai'
 
 const Footer = () => {
+  const { t } = useTranslation()
+
   return (
     <footer className="mt-auto flex justify-center border-t border-zinc-600 p-4">
       <div className="flex items-center gap-2">
-        Made by{' '}
+        {t('Made by')}{' '}
         <a
           href="https://github.com/jv-vogler"
           target="_blank"
