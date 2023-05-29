@@ -28,7 +28,7 @@ const Technologies = ({ technologies }: Props) => {
               .sort((a, b) => b[1] - a[1])
               .map(([tech, timesUsed]) => (
                 <div key={tech} className="flex items-center">
-                  <div className="z-10 w-fit rounded-l-full bg-yellow-500 px-2 text-gray-950">
+                  <div className="z-10 w-fit select-none rounded-l-full bg-yellow-500 px-2 text-gray-950">
                     {javascriptTechnologies[tech].name}
                   </div>
                   <p className="flex h-4 w-fit items-center justify-center rounded-r-full bg-gray-950 px-1.5 py-3 font-bold text-yellow-500">
@@ -47,7 +47,7 @@ const Technologies = ({ technologies }: Props) => {
               .sort((a, b) => b[1] - a[1])
               .map(([tech, timesUsed]) => (
                 <div key={tech} className="flex items-center">
-                  <div className="z-10 w-fit rounded-l-full bg-blue-500 px-2 text-white">
+                  <div className="z-10 w-fit select-none rounded-l-full bg-blue-500 px-2 text-white">
                     {pythonTechnologies[tech].name}
                   </div>
                   <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-zinc-200 p-3 font-bold text-blue-500">
@@ -66,7 +66,7 @@ const Technologies = ({ technologies }: Props) => {
               .sort((a, b) => b[1] - a[1])
               .map(([tech, timesUsed]) => (
                 <div key={tech} className="flex items-center">
-                  <div className="z-10 w-fit rounded-l-full bg-red-700 px-2 text-white">
+                  <div className="select-nonepx-2 z-10 w-fit rounded-l-full  bg-red-700 text-white">
                     {rubyTechnologies[tech].name}
                   </div>
                   <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-zinc-200 p-3 font-bold text-red-700">
@@ -85,7 +85,7 @@ const Technologies = ({ technologies }: Props) => {
               .sort((a, b) => b[1] - a[1])
               .map(([tech, timesUsed]) => (
                 <div key={tech} className="flex items-center">
-                  <div className="z-10 w-fit rounded-l-full bg-[#777BB3] px-2 text-white">
+                  <div className="bg-[#777BB3 select-none] z-10 w-fit rounded-l-full px-2 text-white">
                     {phpTechnologies[tech].name}
                   </div>
                   <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-zinc-200 p-3 font-bold text-[#777BB3]">
