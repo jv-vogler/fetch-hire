@@ -62,7 +62,7 @@ const Technologies = ({ technologies }: Props) => {
                   >
                     {pythonTechnologies[tech].name}
                   </a>
-                  <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-zinc-200 p-3 font-bold text-blue-500">
+                  <p className="flex h-4 w-fit items-center justify-center rounded-r-full bg-zinc-200 px-1.5 py-3 font-bold text-blue-500">
                     {timesUsed}
                   </p>
                 </div>
@@ -82,11 +82,11 @@ const Technologies = ({ technologies }: Props) => {
                     data-tooltip-id="tech-tooltip"
                     data-tooltip-content={rubyTechnologies[tech].description}
                     data-tooltip-place="top"
-                    className="z-10 w-fit select-none rounded-l-full bg-red-700  px-2 text-white"
+                    className="z-10 w-fit select-none rounded-l-full bg-red-700 px-2 text-white"
                   >
                     {rubyTechnologies[tech].name}
                   </a>
-                  <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-zinc-200 p-3 font-bold text-red-700">
+                  <p className="flex h-4 w-fit items-center justify-center rounded-r-full bg-zinc-200 px-1.5 py-3 font-bold text-red-700">
                     {timesUsed}
                   </p>
                 </div>
@@ -106,11 +106,11 @@ const Technologies = ({ technologies }: Props) => {
                     data-tooltip-id="tech-tooltip"
                     data-tooltip-content={phpTechnologies[tech].description}
                     data-tooltip-place="top"
-                    className="bg-[#777BB3 select-none] z-10 w-fit rounded-l-full px-2 text-white"
+                    className="z-10 w-fit select-none rounded-l-full bg-[#777BB3] px-2 text-white"
                   >
                     {phpTechnologies[tech].name}
                   </a>
-                  <p className="flex h-4 w-4 items-center justify-center rounded-r-full bg-zinc-200 p-3 font-bold text-[#777BB3]">
+                  <p className="flex h-4 w-fit items-center justify-center rounded-r-full bg-zinc-200  px-1.5 py-3 font-bold text-[#777BB3]">
                     {timesUsed}
                   </p>
                 </div>
